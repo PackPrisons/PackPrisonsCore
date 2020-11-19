@@ -6,3 +6,7 @@ What does this plugin include?
 - Private Message System
 - Essential Commands
 - Punishment System
+- Essential Events
+- Store Interigation
+- Auction House
+- Gand/Drugs System
