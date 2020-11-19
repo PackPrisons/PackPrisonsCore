@@ -9,4 +9,4 @@ What does this plugin include?
 - Essential Events
 - Store Interigation
 - Auction House
-- Gand/Drugs System
+- Gang/Drugs System
