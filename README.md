@@ -10,3 +10,4 @@ What does this plugin include?
 - Store Interigation
 - Auction House
 - Gang/Drugs System
+- and so much more!
