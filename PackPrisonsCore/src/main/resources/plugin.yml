@@ -2,6 +2,6 @@ name: PackPrisonsCore
 version: ${project.version}
 main: com.packprisons.core.PackPrisonsCore
 api-version: 1.16
-authors: [ Indeedious, Matt ]
+authors: [ Indeedious, Matt, BradonLea, Tucker ]
 description: The Core plugin for PackPrisons
 website: https://www.packprisons.com
