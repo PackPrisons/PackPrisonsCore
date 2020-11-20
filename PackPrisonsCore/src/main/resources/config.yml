@@ -1,0 +1,6 @@
+messages:
+  fly:
+    fly-on: "&a** You have enabled fly."
+    fly-off: "&c** You have disabled flight."
+    fly-on-other: "&a** You have enabled fly for %player%"
+    fly-off-other: "&c** You have disabled fly for %player%"
