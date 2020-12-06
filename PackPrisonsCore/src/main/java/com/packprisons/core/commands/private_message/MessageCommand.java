@@ -1,10 +1,9 @@
-package com.packprisons.core.private_message;
+package com.packprisons.core.commands.private_message;
 
 import com.packprisons.core.PackPrisonsCore;
 import com.packprisons.core.utils.ChatUtil;
 import com.packprisons.core.utils.ConfigUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
