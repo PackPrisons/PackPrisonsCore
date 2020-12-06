@@ -1,6 +1,7 @@
 package com.packprisons.core;
 
 import com.packprisons.core.commands.FlyCommand;
+import com.packprisons.core.events.Player_Join;
 import com.packprisons.core.events.drug_system.DrugEvents;
 import com.packprisons.core.events.drug_system.DrugRecipe;
 import com.packprisons.core.events.drug_system.DrugTypes;
@@ -34,7 +35,7 @@ public final class PackPrisonsCore extends JavaPlugin {
         instance = this;
 
         loadConfig();
-//        registerCommands();
+        //registerCommands();
         registerRecipes();
         registerEvents();
     }
@@ -66,6 +67,7 @@ public final class PackPrisonsCore extends JavaPlugin {
         PluginManager pm = Bukkit.getServer().getPluginManager();
 
         pm.registerEvents(new DrugEvents(), this);
+        pm.registerEvents(new Player_Join(), this);
     }
 
     public static PackPrisonsCore getInstance() { return instance; }
