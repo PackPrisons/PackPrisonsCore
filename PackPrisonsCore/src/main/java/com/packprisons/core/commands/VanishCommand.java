@@ -3,7 +3,6 @@ package com.packprisons.core.commands;
 import com.packprisons.core.utils.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,8 +13,8 @@ import java.util.UUID;
 
 public class VanishCommand implements CommandExecutor {
 
-    private ArrayList<UUID> vanishEnabled = new ArrayList<>();
-    private ArrayList<GameMode> pastGameMode = new ArrayList<>();
+    private final ArrayList<UUID> vanishEnabled = new ArrayList<>();
+    private final ArrayList<GameMode> pastGameMode = new ArrayList<>();
 
     /**
      *
@@ -24,6 +23,7 @@ public class VanishCommand implements CommandExecutor {
      * It might be beneficial to use a Switch Statement instead of if-else statements.
      */
 
+    @Deprecated
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -32,9 +32,7 @@ public class VanishCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        /*if (!player.hasPermission("")) {
-
-        }*/
+        // Add a permissions check here
 
         pastGameMode.add(player.getGameMode());
 
