@@ -1,0 +1,7 @@
+name: PackPrisonsCore
+version: 1.0-SNAPSHOT
+main: com.packprisons.core.PackPrisonsCore
+api-version: 1.16
+authors: [ Indeedious, Matt, BradonLea, Tucker ]
+description: The Core plugin for PackPrisons
+website: https://www.packprisons.com

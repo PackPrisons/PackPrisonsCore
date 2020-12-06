@@ -1,8 +1,22 @@
 package com.packprisons.core;
 
 import com.packprisons.core.commands.FlyCommand;
+import com.packprisons.core.events.drug_system.DrugEvents;
+import com.packprisons.core.events.drug_system.DrugRecipe;
+import com.packprisons.core.events.drug_system.DrugTypes;
+import com.packprisons.core.events.drug_system.Drugs;
 import com.packprisons.core.manager.MessageManager;
 import com.packprisons.core.utils.ChatUtil;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -20,7 +34,9 @@ public final class PackPrisonsCore extends JavaPlugin {
         instance = this;
 
         loadConfig();
-        registerCommands();
+//        registerCommands();
+        registerRecipes();
+        registerEvents();
     }
 
     public MessageManager getMessageManager() {
@@ -39,6 +55,16 @@ public final class PackPrisonsCore extends JavaPlugin {
 
     public void registerCommands() {
         getCommand("fly").setExecutor(new FlyCommand());
+    }
+
+    public void registerRecipes() {
+        Bukkit.addRecipe(DrugRecipe.cocaineRecipe());
+    }
+
+    public void registerEvents() {
+        PluginManager pm = Bukkit.getServer().getPluginManager();
+
+        pm.registerEvents(new DrugEvents(), this);
     }
 
     public static PackPrisonsCore getInstance() { return instance; }
