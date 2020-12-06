@@ -59,6 +59,7 @@ public final class PackPrisonsCore extends JavaPlugin {
 
     public void registerRecipes() {
         Bukkit.addRecipe(DrugRecipe.cocaineRecipe());
+        Bukkit.addRecipe(DrugRecipe.methRecipe());
     }
 
     public void registerEvents() {

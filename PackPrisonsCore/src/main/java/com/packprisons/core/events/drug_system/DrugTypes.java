@@ -1,6 +1,5 @@
 package com.packprisons.core.events.drug_system;
 
-import com.packprisons.core.utils.ChatUtil;
 import org.bukkit.Material;
 
 public enum DrugTypes {
