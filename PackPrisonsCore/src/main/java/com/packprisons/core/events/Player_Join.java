@@ -1,4 +1,4 @@
 package com.packprisons.core.events;
 
-public class Quit {
+public class Player_Join {
 }
