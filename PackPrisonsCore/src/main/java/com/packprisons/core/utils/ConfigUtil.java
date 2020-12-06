@@ -14,4 +14,16 @@ public class ConfigUtil {
     public static String getPMSInvalidPlayer() {
         return PackPrisonsCore.getInstance().getConfig().getString("private-message-system.invalid-player");
     }
+
+    /**
+     *
+     * @return Player Join Configuration Messages
+     */
+    public static String getPLAYERJOINMessage() {
+        return PackPrisonsCore.getInstance().getConfig().getString("player-join.join-message");
+    }
+
+    public static String getNEWPLAYERJOINMessage() {
+        return PackPrisonsCore.getInstance().getConfig().getString("player-join.newJoin-message");
+    }
 }

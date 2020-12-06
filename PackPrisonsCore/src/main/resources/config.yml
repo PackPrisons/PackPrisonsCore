@@ -33,6 +33,12 @@ messages:
 
     invalid-player: '&e&lPlayer not found!'
 
+  player-join:
+
+    join-message: '&a%player% has joined the Server!'
+
+    newJoin-message: '&a%player% has joined for the first time!'
+
 
 
 
