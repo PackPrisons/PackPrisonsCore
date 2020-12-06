@@ -6,15 +6,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class HelpCommand extends CommandUtil implements CommandExecutor {
-
-    protected HelpCommand() {
-        super("help");
-    }
+public class HelpCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        checkConsole();
 
         Player player = (Player) sender;
 
