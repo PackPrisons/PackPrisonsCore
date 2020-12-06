@@ -4,3 +4,36 @@ messages:
     fly-off: "&c** You have disabled flight."
     fly-on-other: "&a** You have enabled fly for %player%"
     fly-off-other: "&c** You have disabled fly for %player%"
+
+  help:
+
+    header:
+
+    first-textcomponent:
+    first-message:
+
+    second-textcomponent:
+    second-message:
+
+    third-textcomponent:
+    third-message:
+
+    fourth-textcomponent:
+    fourth-message:
+
+    fifth-textcomponent:
+    fifth-message:
+
+    footer:
+    footer-textcomponent:
+
+  private-message-system:
+
+    invalid-usage: '&e&lInvalid Usage! /msg (player) (message)'
+
+    invalid-player: '&e&lPlayer not found!'
+
+
+
+
+

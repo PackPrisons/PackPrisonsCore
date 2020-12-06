@@ -1,6 +1,8 @@
 package com.packprisons.core.private_message;
 
 import com.packprisons.core.PackPrisonsCore;
+import com.packprisons.core.utils.ChatUtil;
+import com.packprisons.core.utils.ConfigUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -35,17 +37,22 @@ public class MessageCommand implements CommandExecutor {
                             message.append(args[i]).append(" ");
                         }
 
-                        player.sendMessage(ChatColor.GREEN + "to " + target.getName() + ChatColor.GRAY + message.toString());
-                        target.sendMessage(ChatColor.GREEN + "from " + player.getName() + ChatColor.GRAY + message.toString());
+                        //player.sendMessage(ChatColor.GREEN + "to " + target.getName() + ChatColor.GRAY + message.toString());
+                        //target.sendMessage(ChatColor.GREEN + "from " + player.getName() + ChatColor.GRAY + message.toString());
+
+                        ChatUtil.tell(player, "&ato " + target.getName() + " &7" + message.toString());
+                        ChatUtil.tell(target, "&afrom " + player.getName() + " &7" + message.toString());
 
                         plugin.getMessageManager().recentlyMessaged.put(player, target);
                     }
                 } else {
-                    player.sendMessage(ChatColor.RED + "Player cannot be found!");
+                    // player.sendMessage(ChatColor.RED + "Player cannot be found!");
+                    ChatUtil.tell(player, ConfigUtil.getPMSInvalidPlayer());
                     return true;
                 }
             } else {
-                player.sendMessage(ChatColor.RED + "Invalid Usage! /msg <player> <message>");
+                // player.sendMessage(ChatColor.RED + "Invalid Usage! /msg <player> <message>");
+                ChatUtil.tell(player, ConfigUtil.getPMSInvalidUsage());
                 return true;
             }
             //@TODO: Finish this Message Command, and allow the players rank to be seen in messages once the Rank plugin is created

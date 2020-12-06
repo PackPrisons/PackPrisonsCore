@@ -2,6 +2,7 @@ package com.packprisons.core;
 
 import com.packprisons.core.commands.FlyCommand;
 import com.packprisons.core.manager.MessageManager;
+import com.packprisons.core.utils.ChatUtil;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -12,9 +13,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class PackPrisonsCore extends JavaPlugin {
 
     private MessageManager messageManager;
+    private static PackPrisonsCore instance;
 
     @Override
     public void onEnable() {
+        instance = this;
+
         loadConfig();
         registerCommands();
     }
@@ -31,11 +35,11 @@ public final class PackPrisonsCore extends JavaPlugin {
     public void loadConfig() {
         getConfig().options().copyDefaults(true);
         saveConfig();
-        ;
     }
 
     public void registerCommands() {
         getCommand("fly").setExecutor(new FlyCommand());
     }
 
+    public static PackPrisonsCore getInstance() { return instance; }
 }
