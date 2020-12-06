@@ -24,7 +24,7 @@ public class ChatUtil {
 
     public static void tell(Player player, String message) {
         if (message.contains("&")) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+            player.sendColorMessage(message);
         } else {
             player.sendMessage(message);
         }
@@ -34,7 +34,7 @@ public class ChatUtil {
         if (message.contains("&")) {
             Bukkit.getScheduler().scheduleSyncDelayedTask(PackPrisonsCore.getInstance(), new Runnable() {
                 public void run() {
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+                    player.sendColorMessage(message);
                 }
             }, delayedTicks);
         } else {
