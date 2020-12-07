@@ -5,3 +5,12 @@ api-version: 1.16
 authors: [ Indeedious, Matt, BradonLea, Tucker ]
 description: The Core plugin for PackPrisons
 website: https://www.packprisons.com
+commands:
+  fly:
+    aliases: [f]
+  message:
+    aliases: [msg, tell]
+  reply:
+    aliases: [r]
+  vanish:
+    aliases: [v]

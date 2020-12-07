@@ -2,9 +2,11 @@ package com.packprisons.core.events.drug_system;
 
 import com.packprisons.core.PackPrisonsCore;
 import com.packprisons.core.utils.ChatUtil;
-import org.bukkit.ChatColor;
+import net.minecraft.server.v1_12_R1.NBTTagCompound;
+import net.minecraft.server.v1_12_R1.NBTTagString;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -20,7 +22,17 @@ public class DrugRecipe {
 
         // Cocaine
         ItemStack cocaine = new ItemStack(DrugTypes.COCAINE.getMaterial());
+        net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(cocaine);
+
+        NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
+
+        compound.setString("cocaine", "rare");
+
+        nmsItem.setTag(compound);
+        cocaine = CraftItemStack.asBukkitCopy(nmsItem);
+
         ItemMeta im = cocaine.getItemMeta();
+
         im.setDisplayName(ChatUtil.translate(Drugs.COCAINE.getName()));
         im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         im.addEnchant(Enchantment.SILK_TOUCH, 1, true);
@@ -32,7 +44,7 @@ public class DrugRecipe {
         ShapedRecipe recipe = new ShapedRecipe(key, cocaine);
 
         recipe.shape("TTT", "EEE", "TTT");
-        recipe.setIngredient('T', Material.FIREBALL);
+        recipe.setIngredient('T', Material.BLAZE_POWDER);
         recipe.setIngredient('E', Material.SUGAR_CANE);
 
         return recipe;
@@ -59,4 +71,24 @@ public class DrugRecipe {
 
         return recipe;
     }
+
+    /*public static ShapedRecipe weedRecipe() {
+
+    }
+
+    public static ShapedRecipe heroinRecipe() {
+
+    }
+
+    public static ShapedRecipe opiumRecipe() {
+
+    }
+
+    public static ShapedRecipe ecstasyRecipe() {
+
+    }
+
+    public static ShapedRecipe flakkaRecipe() {
+
+    }*/
 }

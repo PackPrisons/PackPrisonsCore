@@ -1,6 +1,9 @@
 package com.packprisons.core;
 
 import com.packprisons.core.commands.FlyCommand;
+import com.packprisons.core.commands.VanishCommand;
+import com.packprisons.core.commands.private_message.MessageCommand;
+import com.packprisons.core.commands.private_message.ReplyCommand;
 import com.packprisons.core.events.Player_Join;
 import com.packprisons.core.events.drug_system.DrugEvents;
 import com.packprisons.core.events.drug_system.DrugRecipe;
@@ -35,7 +38,7 @@ public final class PackPrisonsCore extends JavaPlugin {
         instance = this;
 
         loadConfig();
-        //registerCommands();
+        registerCommands();
         registerRecipes();
         registerEvents();
     }
@@ -56,6 +59,9 @@ public final class PackPrisonsCore extends JavaPlugin {
 
     public void registerCommands() {
         getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("message").setExecutor(new MessageCommand(this));
+        getCommand("reply").setExecutor(new ReplyCommand(this));
+        getCommand("vanish").setExecutor(new VanishCommand());
     }
 
     public void registerRecipes() {
