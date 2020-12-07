@@ -6,20 +6,9 @@ import com.packprisons.core.commands.private_message.MessageCommand;
 import com.packprisons.core.commands.private_message.ReplyCommand;
 import com.packprisons.core.events.Player_Join;
 import com.packprisons.core.events.drug_system.DrugEvents;
-import com.packprisons.core.events.drug_system.DrugRecipe;
-import com.packprisons.core.events.drug_system.DrugTypes;
-import com.packprisons.core.events.drug_system.Drugs;
+import com.packprisons.core.events.drug_system.DrugRecipes;
 import com.packprisons.core.manager.MessageManager;
-import com.packprisons.core.utils.ChatUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -65,8 +54,8 @@ public final class PackPrisonsCore extends JavaPlugin {
     }
 
     public void registerRecipes() {
-        Bukkit.addRecipe(DrugRecipe.cocaineRecipe());
-        Bukkit.addRecipe(DrugRecipe.methRecipe());
+        Bukkit.addRecipe(DrugRecipes.cocaineRecipe());
+        Bukkit.addRecipe(DrugRecipes.methRecipe());
     }
 
     public void registerEvents() {
