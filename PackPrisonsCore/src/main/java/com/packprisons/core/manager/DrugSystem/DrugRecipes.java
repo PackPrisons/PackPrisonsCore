@@ -39,28 +39,10 @@ public class DrugRecipes {
 
     public static ShapedRecipe methRecipe() {
 
-        // Meth
-        ItemStack meth = new ItemStack(DrugTypes.METH.getMaterial());
-        net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(meth);
-
-        NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
-
-        if (compound != null)
-            compound.setString("drug", "rare");
-
-        nmsItem.setTag(compound);
-        meth = CraftItemStack.asBukkitCopy(nmsItem);
-
-        ItemMeta im = meth.getItemMeta();
-        im.setDisplayName(ChatUtil.translate(Drugs.METH.getName()));
-        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        im.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        meth.setItemMeta(im);
-
         NamespacedKey key = new NamespacedKey(PackPrisonsCore.getInstance(), "drug_meth");
 
         // Recipe
-        ShapedRecipe recipe = new ShapedRecipe(key, meth);
+        ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Meth());
 
         recipe.shape("TTT", "EEE", "TTT");
         recipe.setIngredient('T', Material.COAL);
@@ -71,28 +53,10 @@ public class DrugRecipes {
 
     public static ShapedRecipe weedRecipe() {
 
-        // weed
-        ItemStack weed = new ItemStack(DrugTypes.METH.getMaterial());
-        net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(weed);
-
-        NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
-
-        if (compound != null)
-            compound.setString("drug", "rare");
-
-        nmsItem.setTag(compound);
-        weed = CraftItemStack.asBukkitCopy(nmsItem);
-
-        ItemMeta im = weed.getItemMeta();
-        im.setDisplayName(ChatUtil.translate(Drugs.WEED.getName()));
-        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        im.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        weed.setItemMeta(im);
-
         NamespacedKey key = new NamespacedKey(PackPrisonsCore.getInstance(), "drug_weed");
 
         // Recipe
-        ShapedRecipe recipe = new ShapedRecipe(key, weed);
+        ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Weed());
 
         recipe.shape("TTT", "EEE", "TTT");
         recipe.setIngredient('T', Material.MILK_BUCKET);
@@ -103,28 +67,10 @@ public class DrugRecipes {
 
     public static ShapedRecipe heroinRecipe() {
 
-        // Meth
-        ItemStack heroin = new ItemStack(DrugTypes.METH.getMaterial());
-        net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(heroin);
-
-        NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
-
-        if (compound != null)
-            compound.setString("drug", "rare");
-
-        nmsItem.setTag(compound);
-        heroin = CraftItemStack.asBukkitCopy(nmsItem);
-
-        ItemMeta im = heroin.getItemMeta();
-        im.setDisplayName(ChatUtil.translate(Drugs.HEROINE.getName()));
-        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        im.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        heroin.setItemMeta(im);
-
         NamespacedKey key = new NamespacedKey(PackPrisonsCore.getInstance(), "drug_heroin");
 
         // Recipe
-        ShapedRecipe recipe = new ShapedRecipe(key, heroin);
+        ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Heroine());
 
         recipe.shape("TTT", "EEE", "TTT");
         recipe.setIngredient('T', Material.COCOA);
@@ -135,27 +81,9 @@ public class DrugRecipes {
 
     public static ShapedRecipe opiumRecipe() {
 
-        ItemStack opium = new ItemStack(DrugTypes.OPIUM.getMaterial());
-        net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(opium);
-
-        NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
-
-        if (compound != null)
-            compound.setString("opium", "rare");
-
-        nmsItem.setTag(compound);
-
-        opium = CraftItemStack.asBukkitCopy(nmsItem);
-
-        ItemMeta im = opium.getItemMeta();
-        im.setDisplayName(Drugs.OPIUM.getName());
-        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        im.addEnchant(Enchantment.SILK_TOUCH, 200, true);
-        opium.setItemMeta(im);
-
         NamespacedKey key = new NamespacedKey(PackPrisonsCore.getInstance(), "drug_opium");
 
-        ShapedRecipe recipe = new ShapedRecipe(key, opium);
+        ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Opium());
 
         recipe.shape("TTT", "EEE", "TTT");
 
@@ -167,27 +95,9 @@ public class DrugRecipes {
 
     public static ShapedRecipe ecstasyRecipe() {
 
-        ItemStack ecstasy = new ItemStack(DrugTypes.ECSTASY.getMaterial());
-        net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(ecstasy);
-
-        NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
-
-        if (compound != null)
-            compound.setString("ecstasy", "rare");
-
-        nmsItem.setTag(compound);
-
-        ecstasy = CraftItemStack.asBukkitCopy(nmsItem);
-
-        ItemMeta im = ecstasy.getItemMeta();
-        im.setDisplayName(Drugs.ECSTASY.getName());
-        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        im.addEnchant(Enchantment.SILK_TOUCH, 200, true);
-        ecstasy.setItemMeta(im);
-
         NamespacedKey key = new NamespacedKey(PackPrisonsCore.getInstance(), "drug_ecstasy");
 
-        ShapedRecipe recipe = new ShapedRecipe(key, ecstasy);
+        ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Ecstasy());
 
         recipe.shape("TTT", "EEE", "TTT");
         recipe.setIngredient('T', Material.GLOWSTONE);
@@ -198,27 +108,9 @@ public class DrugRecipes {
 
     public static ShapedRecipe flakkaRecipe() {
 
-        ItemStack flakka = new ItemStack(DrugTypes.FLAKKA.getMaterial());
-        net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(flakka);
-
-        NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
-
-        if (compound != null)
-            compound.setString("flakka", "legendary");
-
-        nmsItem.setTag(compound);
-
-        flakka = CraftItemStack.asBukkitCopy(nmsItem);
-
-        ItemMeta im = flakka.getItemMeta();
-        im.setDisplayName(Drugs.FLAKKA.getName());
-        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        im.addEnchant(Enchantment.SILK_TOUCH, 200, true);
-        flakka.setItemMeta(im);
-
         NamespacedKey key = new NamespacedKey(PackPrisonsCore.getInstance(), "drug_flakka");
 
-        ShapedRecipe recipe = new ShapedRecipe(key, flakka);
+        ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Flakka());
 
         recipe.shape("", "", "");
         recipe.setIngredient('T', Material.GOLD_INGOT);

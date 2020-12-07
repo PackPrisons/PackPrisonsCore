@@ -3,12 +3,15 @@ package com.packprisons.core.manager.DrugSystem.Events;
 import com.packprisons.core.manager.DrugSystem.Enums.Drugs;
 import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import org.bukkit.Effect;
+import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -33,6 +36,15 @@ public class DrugEvents implements Listener {
                 if (compound.hasKey("id")) {
                     cocaine(10, player, compound, event);
                 }
+        }
+    }
+
+    @EventHandler
+    public void onBreak(BlockBreakEvent event) {
+        if (event.getBlock().getType().equals(Material.WHEAT)) { // Weed Check
+
+        } else if (event.getBlock().getType().equals(Material.NETHER_WARTS)) { // Meth Check
+
         }
     }
 
