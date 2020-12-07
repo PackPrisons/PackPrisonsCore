@@ -4,9 +4,9 @@ import com.packprisons.core.commands.FlyCommand;
 import com.packprisons.core.commands.VanishCommand;
 import com.packprisons.core.commands.private_message.MessageCommand;
 import com.packprisons.core.commands.private_message.ReplyCommand;
-import com.packprisons.core.events.Player_Join;
-import com.packprisons.core.events.drug_system.DrugEvents;
-import com.packprisons.core.events.drug_system.DrugRecipes;
+import com.packprisons.core.events.PlayerJoin;
+import com.packprisons.core.manager.DrugSystem.Events.DrugEvents;
+import com.packprisons.core.manager.DrugSystem.DrugRecipes;
 import com.packprisons.core.manager.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -55,14 +55,13 @@ public final class PackPrisonsCore extends JavaPlugin {
 
     public void registerRecipes() {
         Bukkit.addRecipe(DrugRecipes.cocaineRecipe());
-        Bukkit.addRecipe(DrugRecipes.methRecipe());
     }
 
     public void registerEvents() {
         PluginManager pm = Bukkit.getServer().getPluginManager();
 
         pm.registerEvents(new DrugEvents(), this);
-        pm.registerEvents(new Player_Join(), this);
+        pm.registerEvents(new PlayerJoin(), this);
     }
 
     public static PackPrisonsCore getInstance() { return instance; }

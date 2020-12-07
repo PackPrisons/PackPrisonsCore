@@ -1,4 +1,4 @@
-package com.packprisons.core.events.drug_system;
+package com.packprisons.core.manager.DrugSystem.Enums;
 
 import org.bukkit.Material;
 

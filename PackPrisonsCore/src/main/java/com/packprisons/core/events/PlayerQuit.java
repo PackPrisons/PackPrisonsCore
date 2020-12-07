@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 /**
  * This class is responsible for everything that happens when a player leaves
  */
-public class Player_Quit implements Listener {
+public class PlayerQuit implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {

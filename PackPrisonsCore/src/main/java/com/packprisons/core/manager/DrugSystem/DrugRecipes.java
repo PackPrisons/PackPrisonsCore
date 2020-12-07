@@ -1,6 +1,8 @@
-package com.packprisons.core.events.drug_system;
+package com.packprisons.core.manager.DrugSystem;
 
 import com.packprisons.core.PackPrisonsCore;
+import com.packprisons.core.manager.DrugSystem.Enums.DrugTypes;
+import com.packprisons.core.manager.DrugSystem.Enums.Drugs;
 import com.packprisons.core.utils.ChatUtil;
 import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import org.bukkit.Material;
@@ -19,33 +21,16 @@ import org.bukkit.inventory.meta.ItemMeta;
  */
 public class DrugRecipes {
 
+    private static DrugItems drugItems = new DrugItems();
+
     public static ShapedRecipe cocaineRecipe() {
-
-        // Cocaine
-        ItemStack cocaine = new ItemStack(DrugTypes.COCAINE.getMaterial());
-        net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(cocaine);
-
-        NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
-
-        if (compound != null)
-        compound.setString("cocaine", "rare");
-
-        nmsItem.setTag(compound);
-        cocaine = CraftItemStack.asBukkitCopy(nmsItem);
-
-        ItemMeta im = cocaine.getItemMeta();
-
-        im.setDisplayName(ChatUtil.translate(Drugs.COCAINE.getName()));
-        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        im.addEnchant(Enchantment.SILK_TOUCH, 1, true);
-        cocaine.setItemMeta(im);
 
         NamespacedKey key = new NamespacedKey(PackPrisonsCore.getInstance(), "drug_cocaine");
 
         // Recipe
-        ShapedRecipe recipe = new ShapedRecipe(key, cocaine);
+        ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Cocaine());
 
-        recipe.shape("TTT", "EEE", "TTT");
+        recipe.shape(" T ", "TET", " T ");
         recipe.setIngredient('T', Material.BLAZE_POWDER);
         recipe.setIngredient('E', Material.SUGAR_CANE);
 

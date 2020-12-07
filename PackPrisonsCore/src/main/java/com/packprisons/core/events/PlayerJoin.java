@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 /**
  * This class handles all of the events that happen when a player joins the Server
  */
-public class Player_Join implements Listener {
+public class PlayerJoin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {

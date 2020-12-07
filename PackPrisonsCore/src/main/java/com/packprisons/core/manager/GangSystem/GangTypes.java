@@ -1,4 +1,4 @@
-package com.packprisons.core.events.gang_system;
+package com.packprisons.core.manager.GangSystem;
 
 public enum GangTypes {
 
