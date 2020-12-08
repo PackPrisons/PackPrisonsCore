@@ -19,7 +19,7 @@ public class HelpCommand implements CommandExecutor {
         if (args.length == 0) {
             //@TODO: Use textcomponents for the messages
         } else {
-            ChatUtil.tell(player, "&eInvalid Usage! /help");
+            player.sendColorMessage( "&eInvalid Usage! /help");
             return true;
         }
 

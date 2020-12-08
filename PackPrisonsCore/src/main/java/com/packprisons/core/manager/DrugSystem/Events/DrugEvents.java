@@ -45,6 +45,16 @@ public class DrugEvents implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent event) { // This method handles the growing and harvesting of Weed and Meth
         Player player = event.getPlayer();
+        //if break nether_wart on soul sand then drop met
+
+        if(event.getBlock().getType() == Material.NETHER_WARTS) {
+            double locY = event.getBlock().getY();
+            Location location = new Location(event.getBlock().getWorld(), event.getBlock().getX(), locY - 1, event.getBlock().getZ());
+            player.sendColorMessage(location.getBlock().getType().name());
+
+            event.getBlock().getDrops().add(new ItemStack(Material.STICK));
+
+        }
 
 
     }

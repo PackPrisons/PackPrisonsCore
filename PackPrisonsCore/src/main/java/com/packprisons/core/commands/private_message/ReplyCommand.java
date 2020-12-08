@@ -32,34 +32,36 @@ public class ReplyCommand implements CommandExecutor {
         }*/
         HashMap<Player, Player> recentlyMessaged = MessageManager.getRecentlyMessaged();
 
-        if (args.length > 0) {
-            if (recentlyMessaged.containsKey(player)) {
-                if (recentlyMessaged.get(player) != null) {
+     if (command.getName().equalsIgnoreCase("reply")) {
+         if (args.length > 0) {
+             if (recentlyMessaged.containsKey(player)) {
+                 if (recentlyMessaged.get(player) != null) {
 
-                    Player target = recentlyMessaged.get(player);
+                     Player target = recentlyMessaged.get(player);
 
-                    StringBuilder message = new StringBuilder();
+                     StringBuilder message = new StringBuilder();
 
-                    for (int i = 0; i < args.length; i++) {
-                        message.append(args[i]).append(" ");
-                    }
+                     for (int i = 0; i < args.length; i++) {
+                         message.append(args[i]).append(" ");
+                     }
 
-                    ChatUtil.tell(player, "&ato " + target.getName() + " &7" + message.toString());
-                    ChatUtil.tell(target, "&afrom " + player.getName() + " &7" + message.toString());
-                } else {
-                    ChatUtil.tell(player, "&eThis player is not online!");
-                    return true;
-                }
-            } else {
-                ChatUtil.tell(player, "&bNo one has messaged you!");
-                return true;
-            }
+                     player.sendColorMessage("&ato " + target.getName() + " &7" + message.toString());
+                     target.sendColorMessage( "&afrom " + player.getName() + " &7" + message.toString());
+                 } else {
+                     player.sendColorMessage( "&eThis player is not online!");
+                     return true;
+                 }
+             } else {
+                 player.sendColorMessage( "&bNo one has messaged you!");
+                 return true;
+             }
 
-        } else {
-            ChatUtil.tell(player, ConfigUtil.getPMSInvalidUsage().replace("/msg (player) (message)",
-                    "/r (message)"));
-            return true;
-        }
+         } else {
+             player.sendColorMessage(ConfigUtil.getPMSInvalidUsage().replace("/msg (player) (message)",
+                     "/r (message)"));
+             return true;
+         }
+     }
         return false;
     }
 }

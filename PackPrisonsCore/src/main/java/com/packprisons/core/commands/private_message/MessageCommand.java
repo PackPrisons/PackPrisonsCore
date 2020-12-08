@@ -30,38 +30,31 @@ public class MessageCommand implements CommandExecutor {
 
             HashMap<Player, Player> recentlyMessaged = MessageManager.getRecentlyMessaged();
 
-            if (args.length >= 2) {
-                if (Bukkit.getPlayer(args[0]) != null) {
-                    Player target = Bukkit.getPlayer(args[0]);
-                    if (args[0].equalsIgnoreCase(target.getName())) {
+            if (command.getName().equalsIgnoreCase("message")) {
+                if (args.length <= 1) {
+                    player.sendColorMessage("&4Please enter username and message!");
+                }
 
+                if(args.length >= 2) {
+                    Player target = Bukkit.getPlayer(args[0]);
+                    if(target != null) {
                         StringBuilder message = new StringBuilder();
 
                         for (int i = 1; i < args.length; i++) {
                             message.append(args[i]).append(" ");
                         }
 
-                        //player.sendMessage(ChatColor.GREEN + "to " + target.getName() + ChatColor.GRAY + message.toString());
-                        //target.sendMessage(ChatColor.GREEN + "from " + player.getName() + ChatColor.GRAY + message.toString());
-                        ChatUtil.tell(player, "&ato " + target.getName() + " &7" + message.toString());
-                        ChatUtil.tell(target, "&afrom " + player.getName() + " &7" + message.toString());
+                        player.sendColorMessage("&ato " + target.getName() + " &7" + message.toString());
+                        target.sendColorMessage( "&afrom " + player.getName() + " &7" + message.toString());
 
                         recentlyMessaged.put(player, target);
                         MessageManager.add(player, target);
                     }
-                } else {
-                    // player.sendMessage(ChatColor.RED + "Player cannot be found!");
-                    ChatUtil.tell(player, ConfigUtil.getPMSInvalidPlayer());
-                    return true;
                 }
-            } else {
-                // player.sendMessage(ChatColor.RED + "Invalid Usage! /msg <player> <message>");
-                ChatUtil.tell(player, ConfigUtil.getPMSInvalidUsage());
-                return true;
+
+
             }
-            //@TODO: Finish this Message Command, and allow the players rank to be seen in messages once the Rank plugin is created
-        } else {
-            return true;
+
         }
         return false;
     }

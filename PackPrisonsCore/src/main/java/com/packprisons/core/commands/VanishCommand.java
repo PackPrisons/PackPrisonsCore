@@ -46,7 +46,7 @@ public class VanishCommand implements CommandExecutor {
                     onlinePlayer.canSee(player);
                 }
 
-                ChatUtil.tell(player, "&e&lVanish Disabled!");
+                player.sendColorMessage("&e&lVanish Disabled!");
                 player.setGameMode(GameMode.valueOf(String.valueOf(pastGamemode.get(0))));
             } else { // On Enable
                 vanishEnabled.add(player.getUniqueId());
@@ -58,7 +58,7 @@ public class VanishCommand implements CommandExecutor {
                 player.setGameMode(GameMode.SPECTATOR);
                 player.playEffect(player.getLocation(), Effect.SMOKE, 0);
 
-                ChatUtil.tell(player, "&a&lVanish Enabled!");
+                player.sendColorMessage( "&a&lVanish Enabled!");
             }
         } else if (args.length == 1) {
 
@@ -73,8 +73,8 @@ public class VanishCommand implements CommandExecutor {
                             onlinePlayer.canSee(target);
                         }
 
-                        ChatUtil.tell(player, "&e&lYou have Disabled Vanish for " + target.getName());
-                        ChatUtil.tell(target, "&e&lVanish Disabled!");
+                        player.sendColorMessage( "&e&lYou have Disabled Vanish for " + target.getName());
+                        target.sendColorMessage( "&e&lVanish Disabled!");
                     } else { // On Enable
                         vanishEnabled.add(target.getUniqueId());
 
@@ -84,16 +84,16 @@ public class VanishCommand implements CommandExecutor {
 
                         target.setGameMode(GameMode.SPECTATOR);
 
-                        ChatUtil.tell(target, "&a&lVanish Enabled!");
-                        ChatUtil.tell(player, "&a&lVanish has been enabled for " + target.getName());
+                        target.sendColorMessage( "&a&lVanish Enabled!");
+                        player.sendColorMessage( "&a&lVanish has been enabled for " + target.getName());
                     }
                 }
             } else {
-                ChatUtil.tell(player, "&eThis player is not online!");
+                player.sendColorMessage("&eThis player is not online!");
                 return true;
             }
         } else {
-            ChatUtil.tell(player, "&eInvalid Usage! /vanish");
+            player.sendColorMessage("&eInvalid Usage! /vanish");
             return true;
         }
         return false;

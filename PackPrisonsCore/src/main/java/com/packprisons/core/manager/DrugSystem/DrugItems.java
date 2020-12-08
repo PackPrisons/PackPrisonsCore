@@ -71,7 +71,7 @@ public class DrugItems {
         NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
 
         if (compound != null) {
-            compound.setString("class", "A");
+            compound.setString("class", "C");
             compound.setInt("id", 2246);
 
             nmsItem.setTag(compound);
@@ -121,7 +121,7 @@ public class DrugItems {
         NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
 
         if (compound != null) {
-            compound.setString("class", "A");
+            compound.setString("class", "B");
             compound.setInt("id", 2054);
 
             nmsItem.setTag(compound);
@@ -146,7 +146,7 @@ public class DrugItems {
         NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
 
         if (compound != null) {
-            compound.setString("class", "A");
+            compound.setString("class", "B");
             compound.setInt("id", 1986);
 
             nmsItem.setTag(compound);
@@ -171,7 +171,7 @@ public class DrugItems {
         NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
 
         if (compound != null) {
-            compound.setString("class", "A");
+            compound.setString("class", "C");
             compound.setInt("id", 1689);
 
             nmsItem.setTag(compound);
