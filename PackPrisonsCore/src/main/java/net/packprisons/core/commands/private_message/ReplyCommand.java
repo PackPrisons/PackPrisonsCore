@@ -37,8 +37,8 @@ public class ReplyCommand implements CommandExecutor {
                          message.append(args[i]).append(" ");
                      }
 
-                     player.sendColorMessage("&ato " + target.getName() + " &7" + message.toString());
-                     target.sendColorMessage( "&afrom " + player.getName() + " &7" + message.toString());
+                     MessageManager.sendMessage(player, target, message.toString());
+
                  } else {
                      player.sendColorMessage( "&eThis player is not online!");
                      return true;

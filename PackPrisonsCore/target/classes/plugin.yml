@@ -1,10 +1,10 @@
 name: PackPrisonsCore
 version: 1.0-SNAPSHOT
-main: com.packprisons.core.PackPrisonsCore
+main: net.packprisons.core.PackPrisonsCore
 api-version: 1.16
 authors: [ Indeedious, Matt, BradonLea, Tucker ]
 description: The Core plugin for PackPrisons
-website: https://www.packprisons.com
+website: https://www.packprisons.net
 commands:
   fly:
     aliases: [f]
@@ -14,3 +14,5 @@ commands:
     aliases: [r]
   vanish:
     aliases: [v]
+  gamemode:
+    aliases: [gm]

@@ -16,7 +16,8 @@ public class MessageManager {
         recentlyMessaged.put(player, target);
     }
 
-    public void sendMessage(Player sender, Player target, String message) {
-        //@TODO: Make it so that this method can easily send the message of a player in the PMS
+    public static void sendMessage(Player sender, Player target, String message) {
+        sender.sendColorMessage("&ato " + target.getName() + " &7" + message.toString());
+        target.sendColorMessage( "&afrom " + sender.getName() + " &7" + message.toString());
     }
 }

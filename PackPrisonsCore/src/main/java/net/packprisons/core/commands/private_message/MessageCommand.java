@@ -35,8 +35,7 @@ public class MessageCommand implements CommandExecutor {
                             message.append(args[i]).append(" ");
                         }
 
-                        player.sendColorMessage("&ato " + target.getName() + " &7" + message.toString());
-                        target.sendColorMessage( "&afrom " + player.getName() + " &7" + message.toString());
+                        MessageManager.sendMessage(player, target, message.toString());
 
                         recentlyMessaged.put(player, target);
                         MessageManager.add(player, target);
