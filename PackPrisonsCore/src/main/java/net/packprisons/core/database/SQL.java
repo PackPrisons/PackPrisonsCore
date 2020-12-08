@@ -4,13 +4,14 @@ import net.packprisons.core.utils.ChatUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class SQL {
 
     public String host, password, database, username;
     public int port;
-    public Connection connection;
+    public static Connection connection;
 
     public SQL (String host, String database, String username, String password, int port) {
         this.host = host;
@@ -41,5 +42,15 @@ public class SQL {
                         this.database,
                         this.username,
                         this.password);
+    }
+
+    public static PreparedStatement preparedStatement(String query) {
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement(query);
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return ps;
     }
 }
