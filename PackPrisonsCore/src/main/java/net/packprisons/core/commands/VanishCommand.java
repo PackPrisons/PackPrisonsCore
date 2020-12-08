@@ -16,13 +16,6 @@ public class VanishCommand implements CommandExecutor {
     private final ArrayList<UUID> vanishEnabled = new ArrayList<>();
     private final ArrayList<GameMode> pastGamemode = new ArrayList<>();
 
-    /**
-     *
-     * @TODO: Finish this Vanish Command
-     *
-     * It might be beneficial to use a Switch Statement instead of if-else statements.
-     */
-
     @Deprecated
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
