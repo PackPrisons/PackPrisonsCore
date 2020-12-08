@@ -6,37 +6,30 @@ messages:
     fly-off-other: "&c** You have disabled fly for %player%"
 
   help:
-
     header:
-
     first-textcomponent:
     first-message:
-
     second-textcomponent:
     second-message:
-
     third-textcomponent:
     third-message:
-
     fourth-textcomponent:
     fourth-message:
-
     fifth-textcomponent:
     fifth-message:
-
     footer:
     footer-textcomponent:
 
   private-message-system:
-
     invalid-usage: '&e&lInvalid Usage! /msg (player) (message)'
-
     invalid-player: '&e&lPlayer not found!'
+    sent-message: '&ato %target% %message%'
+    incoming-message: '&afrom %sender% %message%'
+    reply-message: '&ato %target% %message%'
+    replied-message: '&afrom %sender% %message%'
 
   player-join:
-
     join-message: '&a%player% has joined the Server!'
-
     newJoin-message: '&a%player% has joined for the first time!'
 
 

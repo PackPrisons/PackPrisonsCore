@@ -19,7 +19,6 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public final class PackPrisonsCore extends JavaPlugin {
 
-    private MessageManager messageManager;
     private static PackPrisonsCore instance;
 
     @Override
@@ -30,10 +29,6 @@ public final class PackPrisonsCore extends JavaPlugin {
         registerCommands();
         registerRecipes();
         registerEvents();
-    }
-
-    public MessageManager getMessageManager() {
-        return messageManager;
     }
 
     @Override

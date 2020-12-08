@@ -1,6 +1,5 @@
 package com.packprisons.core.manager.DrugSystem.Enums;
 
-import com.packprisons.core.manager.DrugSystem.Enums.DrugTypes;
 import com.packprisons.core.utils.ChatUtil;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;

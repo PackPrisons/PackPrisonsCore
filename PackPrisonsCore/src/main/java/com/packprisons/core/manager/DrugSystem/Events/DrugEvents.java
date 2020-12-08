@@ -1,10 +1,10 @@
 package com.packprisons.core.manager.DrugSystem.Events;
 
+import com.packprisons.core.manager.DrugSystem.DrugItems;
+import com.packprisons.core.manager.DrugSystem.Enums.DrugTypes;
 import com.packprisons.core.manager.DrugSystem.Enums.Drugs;
 import net.minecraft.server.v1_12_R1.NBTTagCompound;
-import org.bukkit.Effect;
-import org.bukkit.Material;
-import org.bukkit.Particle;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
@@ -13,6 +13,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.MaterialData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -35,22 +37,21 @@ public class DrugEvents implements Listener {
             if (compound != null)
                 if (compound.hasKey("id")) {
                     cocaine(10, player, compound, event);
+                    weed(10, player, compound, event);
                 }
         }
     }
 
     @EventHandler
-    public void onBreak(BlockBreakEvent event) {
-        if (event.getBlock().getType().equals(Material.WHEAT)) { // Weed Check
+    public void onBreak(BlockBreakEvent event) { // This method handles the growing and harvesting of Weed and Meth
+        Player player = event.getPlayer();
 
-        } else if (event.getBlock().getType().equals(Material.NETHER_WARTS)) { // Meth Check
 
-        }
     }
 
-    private void cocaine(int time, Player player, NBTTagCompound compound,  PlayerInteractEvent event) {
-        if(compound.getInt("id") == Drugs.COCAINE.getID()) {
-            if(!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
+    private void cocaine(int time, Player player, NBTTagCompound compound, PlayerInteractEvent event) {
+        if (compound.getInt("id") == Drugs.COCAINE.getID()) {
+            if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
                 cooldown.put(player, System.currentTimeMillis() + (time * 1000));
 
                 player.sendColorMessage("&aLets get high!");
@@ -62,11 +63,34 @@ public class DrugEvents implements Listener {
                 long longRemaining = cooldown.get(player) - System.currentTimeMillis();
                 int intRemaining = (int) longRemaining / 1000;
 
-                if(intRemaining == 0) {
+                if (intRemaining == 0) {
                     cooldown.remove(player);
                 }
 
-                player.sendColorMessage("&e&lYou have " + intRemaining + " remaining!");
+                player.sendColorMessage("&cYou have " + intRemaining + " remaining!");
+            }
+        }
+    }
+
+    private void weed(int time, Player player, NBTTagCompound compound, PlayerInteractEvent event) {
+        if (compound.getInt("id") == Drugs.WEED.getID()) {
+            if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
+                cooldown.put(player, System.currentTimeMillis() + (time * 1000));
+
+                player.sendColorMessage("&aLets get Baked!");
+                player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 200, 2), true);
+                player.playEffect(player.getLocation(), Effect.PORTAL_TRAVEL, 1);
+                player.spawnParticle(Particle.DRAGON_BREATH, player.getLocation(), 10);
+                event.getItem().setAmount(event.getItem().getAmount() - 1);
+            } else {
+                long longRemaining = cooldown.get(player) - System.currentTimeMillis();
+                int intRemaining = (int) longRemaining / 1000;
+
+                if (intRemaining == 0) {
+                    cooldown.remove(player);
+                }
+
+                player.sendColorMessage("&cYou have " + intRemaining + " remaining!");
             }
         }
     }

@@ -15,6 +15,22 @@ public class ConfigUtil {
         return PackPrisonsCore.getInstance().getConfig().getString("private-message-system.invalid-player");
     }
 
+    public static String getSENDERMessage() {
+        return PackPrisonsCore.getInstance().getConfig().getString("private-message-system.sent-message");
+    }
+
+    public static String getTARGETMessage() {
+        return PackPrisonsCore.getInstance().getConfig().getString("private-message-system.incoming-message");
+    }
+
+    public static String getREPLYMessage() {
+        return PackPrisonsCore.getInstance().getConfig().getString("private-message-system.reply-message");
+    }
+
+    public static String getREPLIEDMessage() {
+        return PackPrisonsCore.getInstance().getConfig().getString("private-message-system.replied-message");
+    }
+
     /**
      *
      * @return Player Join Configuration Messages

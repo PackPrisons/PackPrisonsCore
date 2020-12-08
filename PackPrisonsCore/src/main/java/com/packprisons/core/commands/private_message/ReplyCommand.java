@@ -1,12 +1,15 @@
 package com.packprisons.core.commands.private_message;
 
 import com.packprisons.core.PackPrisonsCore;
+import com.packprisons.core.manager.MessageManager;
 import com.packprisons.core.utils.ChatUtil;
 import com.packprisons.core.utils.ConfigUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.HashMap;
 
 public class ReplyCommand implements CommandExecutor {
 
@@ -27,18 +30,19 @@ public class ReplyCommand implements CommandExecutor {
         /*if (!player.hasPermission("")) {
 
         }*/
+        HashMap<Player, Player> recentlyMessaged = MessageManager.getRecentlyMessaged();
 
         if (args.length > 0) {
-            if (plugin.getMessageManager().recentlyMessaged.containsKey(player)) {
-                if (plugin.getMessageManager().recentlyMessaged.get(player) != null) {
+            if (recentlyMessaged.containsKey(player)) {
+                if (recentlyMessaged.get(player) != null) {
+
+                    Player target = recentlyMessaged.get(player);
 
                     StringBuilder message = new StringBuilder();
 
                     for (int i = 0; i < args.length; i++) {
                         message.append(args[i]).append(" ");
                     }
-
-                    Player target = plugin.getMessageManager().recentlyMessaged.get(player);
 
                     ChatUtil.tell(player, "&ato " + target.getName() + " &7" + message.toString());
                     ChatUtil.tell(target, "&afrom " + player.getName() + " &7" + message.toString());

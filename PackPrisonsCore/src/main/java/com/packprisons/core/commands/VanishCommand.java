@@ -2,6 +2,7 @@ package com.packprisons.core.commands;
 
 import com.packprisons.core.utils.ChatUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.Effect;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,7 +15,7 @@ import java.util.UUID;
 public class VanishCommand implements CommandExecutor {
 
     private final ArrayList<UUID> vanishEnabled = new ArrayList<>();
-    private final ArrayList<GameMode> pastGameMode = new ArrayList<>();
+    private final ArrayList<GameMode> pastGamemode = new ArrayList<>();
 
     /**
      *
@@ -34,9 +35,9 @@ public class VanishCommand implements CommandExecutor {
 
         // Add a permissions check here
 
-        pastGameMode.add(player.getGameMode());
-
         if (args.length == 0) {
+
+            pastGamemode.add(player.getGameMode());
 
             if (vanishEnabled.contains(player.getUniqueId())) { // On Disable
                 vanishEnabled.remove(player.getUniqueId());
@@ -45,10 +46,8 @@ public class VanishCommand implements CommandExecutor {
                     onlinePlayer.canSee(player);
                 }
 
-                player.setGameMode(GameMode.valueOf(pastGameMode.toString())); // Test this out
-                pastGameMode.remove(player.getGameMode());
-
                 ChatUtil.tell(player, "&e&lVanish Disabled!");
+                player.setGameMode(GameMode.valueOf(String.valueOf(pastGamemode.get(0))));
             } else { // On Enable
                 vanishEnabled.add(player.getUniqueId());
 
@@ -57,6 +56,7 @@ public class VanishCommand implements CommandExecutor {
                 }
 
                 player.setGameMode(GameMode.SPECTATOR);
+                player.playEffect(player.getLocation(), Effect.SMOKE, 0);
 
                 ChatUtil.tell(player, "&a&lVanish Enabled!");
             }
@@ -72,9 +72,6 @@ public class VanishCommand implements CommandExecutor {
                         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                             onlinePlayer.canSee(target);
                         }
-
-                        target.setGameMode(GameMode.valueOf(pastGameMode.toString())); // Test this out
-                        pastGameMode.remove(target.getGameMode());
 
                         ChatUtil.tell(player, "&e&lYou have Disabled Vanish for " + target.getName());
                         ChatUtil.tell(target, "&e&lVanish Disabled!");
