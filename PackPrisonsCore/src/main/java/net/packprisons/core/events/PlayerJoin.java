@@ -16,12 +16,11 @@ public class PlayerJoin implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        if (player.hasPlayedBefore()) { // Old Player
-            event.setJoinMessage(ChatUtil.translate(ConfigUtil.getPLAYERJOINMessage()).replace("%player%",
-                                player.getName()));
-        } else { // New Player
-            event.setJoinMessage(ChatUtil.translate(ConfigUtil.getNEWPLAYERJOINMessage()).replace("%player%",
-                                                    player.getName()));
+
+        if(!player.hasPlayedBefore()) {
+            player.sendColorMessage(ConfigUtil.getNEWPLAYERJOINMessage().replace("%player%", player.getName()));
+        } else {
+            player.sendColorMessage(ConfigUtil.getPLAYERJOINMessage().replace("%player%", player.getName()));
         }
     }
 }
