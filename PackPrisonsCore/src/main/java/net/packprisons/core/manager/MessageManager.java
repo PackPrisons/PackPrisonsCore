@@ -17,7 +17,7 @@ public class MessageManager {
     }
 
     public static void sendMessage(Player sender, Player target, String message) {
-        sender.sendColorMessage("&ato " + target.getName() + " &7" + message.toString());
-        target.sendColorMessage( "&afrom " + sender.getName() + " &7" + message.toString());
+        sender.sendColorMessage("&ato " + target.getName() + " &7" + message);
+        target.sendColorMessage( "&afrom " + sender.getName() + " &7" + message);
     }
 }

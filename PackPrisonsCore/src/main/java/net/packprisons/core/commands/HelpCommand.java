@@ -1,13 +1,12 @@
 package net.packprisons.core.commands;
 
-import net.md_5.bungee.api.chat.TextComponent;
-import net.packprisons.core.utils.ChatUtil;
+import net.packprisons.core.utils.commandUtils.HelpCommandUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class HelpCommand implements CommandExecutor {
+public class HelpCommand extends HelpCommandUtil implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -18,9 +17,30 @@ public class HelpCommand implements CommandExecutor {
         }*/
 
         if (args.length == 0) {
-            TextComponent faq = new TextComponent(ChatUtil.translate("&a> &cYou any questions you need answered? "));
+            super.buildHelpMessage(player, "&a> &cHelp",
+                    "&b&lCheck out our FAQ!",
+                    "&b&lCheck out our Support Page!",
+                    "&b&lReport Rule Breakers Here!",
+                    "&b&lCheck out our Rules Here!",
+                    "&b&lCheck out our Forums Here!",
+                    "&a> &bHave any questions?",
+                    "&a> &bHave an issue with a purchase?",
+                    "&a> &bSee someone breaking the rules?",
+                    "&a> &bWant to avoid getting in trouble?",
+                    "&a> &bStill have questions or need more support?",
+                    "&eClick Here!",
+                    "&eClick Here!",
+                    "&eClick Here!",
+                    "&eClick Here!",
+                    "&eClick Here!",
+                    "https://www.packprisons.net",
+                    "https://www.packprisons.net",
+                    "https://www.packprisons.net",
+                    "https://www.packprisons.net",
+                    "https://www.packprisons.net",
+                    "&a> &aMake sure to follow us on Twitter! @PackPrisons");
         } else {
-            player.sendColorMessage( "&eInvalid Usage! /help");
+            player.sendColorMessage("&eInvalid Usage! /help");
             return true;
         }
 
