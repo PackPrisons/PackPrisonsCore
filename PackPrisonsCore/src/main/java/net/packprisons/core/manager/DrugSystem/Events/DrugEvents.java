@@ -1,5 +1,6 @@
 package net.packprisons.core.manager.DrugSystem.Events;
 
+import net.packprisons.core.manager.DrugSystem.DrugItems;
 import net.packprisons.core.manager.DrugSystem.Enums.Drugs;
 import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import org.bukkit.*;
@@ -44,12 +45,23 @@ public class DrugEvents implements Listener {
         //if break nether_wart on soul sand then drop met
 
         if(event.getBlock().getType() == Material.NETHER_WARTS) {
-            double locY = event.getBlock().getY();
-            Location location = new Location(event.getBlock().getWorld(), event.getBlock().getX(), locY - 1, event.getBlock().getZ());
-            player.sendColorMessage(location.getBlock().getType().name());
+            net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(new ItemStack(event.getBlock().getType()));
 
-            event.getBlock().getDrops().add(new ItemStack(Material.STICK));
+            NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
 
+            if (compound != null) {
+                if (compound.hasKey("id")) {
+                    double locY = event.getBlock().getY();
+                    Location location = new Location(event.getBlock().getWorld(), event.getBlock().getX(), locY - 1, event.getBlock().getZ());
+                    player.sendColorMessage(location.getBlock().getType().name());
+
+                    DrugItems drugItems = new DrugItems();
+
+                    event.getBlock().getDrops().add(new ItemStack(drugItems.Meth()));
+                } else {
+                    event.setCancelled(true);
+                }
+            }
         }
 
 

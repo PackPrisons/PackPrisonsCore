@@ -19,12 +19,12 @@ public class FlyCommand implements CommandExecutor {
             if (player.getAllowFlight()) {
                 player.setAllowFlight(false);
                 player.setFlying(false);
-                //player.sendMessage(ChatUtil.translate(plugin.getConfig().getString("messages.fly.fly-off")));
+
                 player.sendColorMessage(plugin.getConfig().getString("messages.fly.fly-off"));
             } else {
                 player.setAllowFlight(true);
                 player.setFlying(true);
-                //player.sendMessage(ChatUtil.translate(plugin.getConfig().getString("messages.fly.fly-on")));
+
                 player.sendColorMessage(plugin.getConfig().getString("messages.fly.fly-on"));
             }
             return true;
