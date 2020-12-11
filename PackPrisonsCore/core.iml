@@ -19,8 +19,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="packprisons" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: net.packprisons:PrisonX-Server:1.12.2-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.packprisons:PrisonX-Server:1.12.2-R0.1-SNAPSHOT" level="project" />
   </component>
 </module>

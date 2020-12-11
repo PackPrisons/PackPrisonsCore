@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: net.packprisons:PrisonX-Server:1.12.2-R0.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/net/packprisons/PrisonX-Server/1.12.2-R0.1-SNAPSHOT/PrisonX-Server-1.12.2-R0.1-20201209.210944-3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/packprisons/PrisonX-Server/1.12.2-R0.1-SNAPSHOT/PrisonX-Server-1.12.2-R0.1-20201210.194658-5.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/net/packprisons/PrisonX-Server/1.12.2-R0.1-SNAPSHOT/PrisonX-Server-1.12.2-R0.1-20201209.210944-3-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/packprisons/PrisonX-Server/1.12.2-R0.1-SNAPSHOT/PrisonX-Server-1.12.2-R0.1-20201210.194658-5-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/net/packprisons/PrisonX-Server/1.12.2-R0.1-SNAPSHOT/PrisonX-Server-1.12.2-R0.1-20201209.210944-3-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/packprisons/PrisonX-Server/1.12.2-R0.1-SNAPSHOT/PrisonX-Server-1.12.2-R0.1-20201210.194658-5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

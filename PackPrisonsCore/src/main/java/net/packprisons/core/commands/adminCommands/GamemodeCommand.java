@@ -1,4 +1,4 @@
-package net.packprisons.core.commands;
+package net.packprisons.core.commands.adminCommands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -16,6 +16,8 @@ public class GamemodeCommand implements CommandExecutor {
             if (sender instanceof Player) {
 
                 Player player = (Player) sender;
+
+                //@TODO: Use a Switch Statement here
 
                 if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("c") ||

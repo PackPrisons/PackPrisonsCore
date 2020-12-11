@@ -1,6 +1,5 @@
 package net.packprisons.core.events;
 
-import net.packprisons.core.utils.ChatUtil;
 import net.packprisons.core.utils.ConfigUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,6 +15,7 @@ public class PlayerJoin implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
+        event.setJoinMessage(null);
 
         if(!player.hasPlayedBefore()) {
             player.sendColorMessage(ConfigUtil.getNEWPLAYERJOINMessage().replace("%player%", player.getName()));

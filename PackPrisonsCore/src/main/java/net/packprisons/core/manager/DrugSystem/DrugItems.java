@@ -12,7 +12,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class DrugItems {
 
-
     public ItemStack Cocaine() {
 
         ItemStack cocaine = new ItemStack(DrugTypes.COCAINE.getMaterial());

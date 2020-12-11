@@ -35,6 +35,7 @@ public class DrugEvents implements Listener {
                 if (compound.hasKey("id")) {
                     cocaine(10, player, compound, event);
                     weed(10, player, compound, event);
+                    meth(10, player, compound, event);
                 }
         }
     }
@@ -67,6 +68,7 @@ public class DrugEvents implements Listener {
 
     }
 
+    @Deprecated
     private void cocaine(int time, Player player, NBTTagCompound compound, PlayerInteractEvent event) {
         if (compound.getInt("id") == Drugs.COCAINE.getID()) {
             if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
@@ -90,6 +92,7 @@ public class DrugEvents implements Listener {
         }
     }
 
+    @Deprecated
     private void weed(int time, Player player, NBTTagCompound compound, PlayerInteractEvent event) {
         if (compound.getInt("id") == Drugs.WEED.getID()) {
             if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
@@ -99,6 +102,30 @@ public class DrugEvents implements Listener {
                 player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 200, 2), true);
                 player.playEffect(player.getLocation(), Effect.PORTAL_TRAVEL, 1);
                 player.spawnParticle(Particle.DRAGON_BREATH, player.getLocation(), 10);
+                event.getItem().setAmount(event.getItem().getAmount() - 1);
+            } else {
+                long longRemaining = cooldown.get(player) - System.currentTimeMillis();
+                int intRemaining = (int) longRemaining / 1000;
+
+                if (intRemaining == 0) {
+                    cooldown.remove(player);
+                }
+
+                player.sendColorMessage("&cYou have " + intRemaining + " remaining!");
+            }
+        }
+    }
+
+    @Deprecated
+    private void meth(int time, Player player, NBTTagCompound compound, PlayerInteractEvent event) {
+        if (compound.getInt("id") == Drugs.METH.getID()) {
+            if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
+                cooldown.put(player, System.currentTimeMillis() + (time * 1000));
+
+                player.sendColorMessage("&aLets go crazy!");
+                player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 200, 2), true);
+                player.playEffect(player.getLocation(), Effect.PORTAL_TRAVEL, 1);
+                player.spawnParticle(Particle.SMOKE_LARGE, player.getLocation(), 10);
                 event.getItem().setAmount(event.getItem().getAmount() - 1);
             } else {
                 long longRemaining = cooldown.get(player) - System.currentTimeMillis();

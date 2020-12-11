@@ -5,6 +5,7 @@ import net.packprisons.core.PackPrisonsCore;
 public class ConfigUtil {
 
     /**
+     *
      * @return Private Message System Configuration Messages
      */
     public static String getPMSInvalidUsage() {

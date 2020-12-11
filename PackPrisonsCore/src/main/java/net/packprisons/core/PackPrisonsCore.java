@@ -1,11 +1,15 @@
 package net.packprisons.core;
 
 import net.packprisons.core.commands.FlyCommand;
-import net.packprisons.core.commands.GamemodeCommand;
-import net.packprisons.core.commands.VanishCommand;
+import net.packprisons.core.commands.PingCommand;
+import net.packprisons.core.commands.TPACommand;
+import net.packprisons.core.commands.adminCommands.*;
+import net.packprisons.core.commands.HelpCommand;
 import net.packprisons.core.commands.private_message.MessageCommand;
 import net.packprisons.core.commands.private_message.ReplyCommand;
 import net.packprisons.core.events.PlayerJoin;
+import net.packprisons.core.events.PlayerQuit;
+import net.packprisons.core.events.commandEvents.PlayerMove;
 import net.packprisons.core.manager.DrugSystem.Events.DrugEvents;
 import net.packprisons.core.manager.DrugSystem.DrugRecipes;
 import org.bukkit.Bukkit;
@@ -47,10 +51,22 @@ public final class PackPrisonsCore extends JavaPlugin {
         getCommand("reply").setExecutor(new ReplyCommand());
         getCommand("vanish").setExecutor(new VanishCommand());
         getCommand("gamemode").setExecutor(new GamemodeCommand());
+        getCommand("help").setExecutor(new HelpCommand());
+        getCommand("tpa").setExecutor(new TPACommand());
+        getCommand("clearchat").setExecutor(new ClearChatCommand());
+        getCommand("tpall").setExecutor(new TPALLCommand());
+        getCommand("invsee").setExecutor(new InventorySeeCommand());
+        getCommand("ping").setExecutor(new PingCommand());
     }
 
     public void registerRecipes() {
         Bukkit.addRecipe(DrugRecipes.cocaineRecipe());
+        Bukkit.addRecipe(DrugRecipes.methRecipe());
+        Bukkit.addRecipe(DrugRecipes.weedRecipe());
+        Bukkit.addRecipe(DrugRecipes.ecstasyRecipe());
+        Bukkit.addRecipe(DrugRecipes.heroinRecipe());
+        Bukkit.addRecipe(DrugRecipes.opiumRecipe());
+        Bukkit.addRecipe(DrugRecipes.flakkaRecipe());
     }
 
     public void registerEvents() {
@@ -58,6 +74,8 @@ public final class PackPrisonsCore extends JavaPlugin {
 
         pm.registerEvents(new DrugEvents(), this);
         pm.registerEvents(new PlayerJoin(), this);
+        pm.registerEvents(new PlayerQuit(), this);
+        pm.registerEvents(new PlayerMove(), this);
     }
 
     public static PackPrisonsCore getInstance() { return instance; }

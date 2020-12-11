@@ -1,4 +1,4 @@
-package net.packprisons.core.commands;
+package net.packprisons.core.commands.adminCommands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

@@ -16,3 +16,13 @@ commands:
     aliases: [v]
   gamemode:
     aliases: [gm]
+  help:
+    description: Displays a Help Message
+  tpa:
+    description: Asks the specified player to allow the sender to teleport to them
+  clearchat:
+    aliases: [cc]
+  invsee:
+    aliases: [is]
+  tpall:
+    aliases: [ta]
