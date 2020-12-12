@@ -53,7 +53,7 @@ public class DrugItems {
 
             ItemMeta im = meth.getItemMeta();
 
-            im.setDisplayName(Drugs.METH.getName());
+            im.setDisplayName(ChatUtil.translate(Drugs.METH.getName()));
             im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             im.addEnchant(Enchantment.SILK_TOUCH, 200, true);
             meth.setItemMeta(im);
@@ -78,7 +78,7 @@ public class DrugItems {
 
             ItemMeta im = weed.getItemMeta();
 
-            im.setDisplayName(Drugs.WEED.getName());
+            im.setDisplayName(ChatUtil.translate(Drugs.WEED.getName()));
             im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             im.addEnchant(Enchantment.SILK_TOUCH, 200, true);
             weed.setItemMeta(im);
@@ -103,7 +103,7 @@ public class DrugItems {
 
             ItemMeta im = heroine.getItemMeta();
 
-            im.setDisplayName(Drugs.HEROINE.getName());
+            im.setDisplayName(ChatUtil.translate(Drugs.HEROINE.getName()));
             im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             im.addEnchant(Enchantment.SILK_TOUCH, 200, true);
             heroine.setItemMeta(im);
@@ -128,7 +128,7 @@ public class DrugItems {
 
             ItemMeta im = opium.getItemMeta();
 
-            im.setDisplayName(Drugs.OPIUM.getName());
+            im.setDisplayName(ChatUtil.translate(Drugs.OPIUM.getName()));
             im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             im.addEnchant(Enchantment.SILK_TOUCH, 200, true);
             opium.setItemMeta(im);
@@ -153,7 +153,7 @@ public class DrugItems {
 
             ItemMeta im = ecstasy.getItemMeta();
 
-            im.setDisplayName(Drugs.ECSTASY.getName());
+            im.setDisplayName(ChatUtil.translate(Drugs.ECSTASY.getName()));
             im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             im.addEnchant(Enchantment.SILK_TOUCH, 200, true);
             ecstasy.setItemMeta(im);
@@ -178,7 +178,7 @@ public class DrugItems {
 
             ItemMeta im = flakka.getItemMeta();
 
-            im.setDisplayName(Drugs.FLAKKA.getName());
+            im.setDisplayName(ChatUtil.translate(Drugs.FLAKKA.getName()));
             im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             im.addEnchant(Enchantment.SILK_TOUCH, 200, true);
             flakka.setItemMeta(im);

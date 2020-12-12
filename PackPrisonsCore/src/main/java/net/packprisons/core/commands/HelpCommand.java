@@ -17,7 +17,7 @@ public class HelpCommand extends HelpCommandUtil implements CommandExecutor {
         }*/
 
         if (args.length == 0) {
-            super.buildHelpMessage(player, "&a> &cHelp",
+            super.buildHelpMessage(player, "&9&lPackPrisons",
                     "&b&lCheck out our FAQ!",
                     "&b&lCheck out our Support Page!",
                     "&b&lReport Rule Breakers Here!",
@@ -38,7 +38,7 @@ public class HelpCommand extends HelpCommandUtil implements CommandExecutor {
                     "https://www.packprisons.net",
                     "https://www.packprisons.net",
                     "https://www.packprisons.net",
-                    "&a> &aMake sure to follow us on Twitter! @PackPrisons");
+                    "&a> &eMake sure to follow us on Twitter! &b@PackPrisons");
         } else {
             player.sendColorMessage("&eInvalid Usage! /help");
             return true;

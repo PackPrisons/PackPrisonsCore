@@ -7,6 +7,7 @@ import net.packprisons.core.commands.adminCommands.*;
 import net.packprisons.core.commands.HelpCommand;
 import net.packprisons.core.commands.private_message.MessageCommand;
 import net.packprisons.core.commands.private_message.ReplyCommand;
+import net.packprisons.core.events.PlayerChat;
 import net.packprisons.core.events.PlayerJoin;
 import net.packprisons.core.events.PlayerQuit;
 import net.packprisons.core.events.commandEvents.PlayerMove;
@@ -76,6 +77,7 @@ public final class PackPrisonsCore extends JavaPlugin {
         pm.registerEvents(new PlayerJoin(), this);
         pm.registerEvents(new PlayerQuit(), this);
         pm.registerEvents(new PlayerMove(), this);
+        pm.registerEvents(new PlayerChat(), this );
     }
 
     public static PackPrisonsCore getInstance() { return instance; }

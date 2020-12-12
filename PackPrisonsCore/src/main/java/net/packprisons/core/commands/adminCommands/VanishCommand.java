@@ -9,12 +9,16 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
+/**
+ * - bug with Vanish Command, still not able to see the Player even while there in Vanish
+ */
 public class VanishCommand implements CommandExecutor {
 
     private final ArrayList<UUID> vanishEnabled = new ArrayList<>();
-    private final ArrayList<GameMode> pastGamemode = new ArrayList<>();
+    private final HashMap<Player, GameMode> pastGameMode = new HashMap<>();
 
     @Deprecated
     @Override
@@ -29,7 +33,7 @@ public class VanishCommand implements CommandExecutor {
 
         if (args.length == 0) {
 
-            pastGamemode.add(player.getGameMode());
+            pastGameMode.put(player, player.getGameMode());
 
             if (vanishEnabled.contains(player.getUniqueId())) { // On Disable
                 vanishEnabled.remove(player.getUniqueId());
@@ -39,7 +43,7 @@ public class VanishCommand implements CommandExecutor {
                 }
 
                 player.sendColorMessage("&e&lVanish Disabled!");
-                player.setGameMode(GameMode.valueOf(String.valueOf(pastGamemode.get(0))));
+                player.setGameMode(pastGameMode.get(player));
             } else { // On Enable
                 vanishEnabled.add(player.getUniqueId());
 
@@ -58,6 +62,8 @@ public class VanishCommand implements CommandExecutor {
 
             if (target != null) {
                 if (args[0].equalsIgnoreCase(target.getName())) {
+                    pastGameMode.put(target, target.getGameMode());
+
                     if (vanishEnabled.contains(target.getUniqueId())) { // On Disable
                         vanishEnabled.remove(target.getUniqueId());
 
@@ -65,8 +71,9 @@ public class VanishCommand implements CommandExecutor {
                             onlinePlayer.canSee(target);
                         }
 
-                        player.sendColorMessage( "&e&lYou have Disabled Vanish for " + target.getName());
-                        target.sendColorMessage( "&e&lVanish Disabled!");
+                        player.sendColorMessage( "&c&lYou have Disabled Vanish for " + target.getName());
+                        target.sendColorMessage( "&c&lVanish Disabled!");
+                        target.setGameMode(pastGameMode.get(target));
                     } else { // On Enable
                         vanishEnabled.add(target.getUniqueId());
 

@@ -1,10 +1,10 @@
 name: PackPrisonsCore
 version: ${project.version}
 main: net.packprisons.core.PackPrisonsCore
-api-version: 1.16
 authors: [ Indeedious, Matt, BradonLea, Tucker ]
 description: The Core plugin for PackPrisons
 website: https://www.packprisons.net
+api-version: 1.12
 commands:
   fly:
     aliases: [f]
@@ -22,7 +22,11 @@ commands:
     description: Asks the specified player to allow the sender to teleport to them
   clearchat:
     aliases: [cc]
-  invsee:
-    aliases: [is]
+  inventorysee:
+    aliases: [invsee]
   tpall:
     aliases: [ta]
+  ping:
+    description: Displays your Ping
+  teleport:
+    aliases: [tp]

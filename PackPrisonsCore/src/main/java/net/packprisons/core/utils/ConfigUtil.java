@@ -1,5 +1,6 @@
 package net.packprisons.core.utils;
 
+import net.packprisons.Managers.PrisonXConfig;
 import net.packprisons.core.PackPrisonsCore;
 
 public class ConfigUtil {
@@ -42,5 +43,13 @@ public class ConfigUtil {
 
     public static String getNEWPLAYERJOINMessage() {
         return PackPrisonsCore.getInstance().getConfig().getString("player-join.newJoin-message");
+    }
+
+    /**
+     *
+     * @return Command Configuration Messages
+     */
+    public static String getCLEARCHATCOMMANDMessage() {
+        return PackPrisonsCore.getInstance().getConfig().getString("command-messages.clear-chat");
     }
 }

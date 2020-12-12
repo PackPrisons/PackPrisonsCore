@@ -16,6 +16,9 @@ public class TPACommand implements CommandExecutor {
     public HashMap<Player, Long> cooldown = new HashMap<>();
     private final PlayerMove move = new PlayerMove();
 
+    /**
+     * - Bug with accepting the TPA
+     */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equals("tpa")) {
@@ -36,7 +39,7 @@ public class TPACommand implements CommandExecutor {
                             if (tpa.containsKey(player) &&
                                     tpa.get(player) != null) {
                                 if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
-                                        cooldown.put(player, System.currentTimeMillis() + (5 * 1000));
+                                        cooldown.put(player, System.currentTimeMillis() + (7 * 1000));
                                 } else {
                                     if (move.still.contains(player)) {
                                         long longRemaining = cooldown.get(player) - System.currentTimeMillis();

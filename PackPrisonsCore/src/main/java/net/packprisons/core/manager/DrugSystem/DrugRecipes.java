@@ -12,7 +12,7 @@ import org.bukkit.inventory.ShapedRecipe;
  */
 public class DrugRecipes {
 
-    private static DrugItems drugItems = new DrugItems();
+    private static final DrugItems drugItems = new DrugItems();
 
     public static ShapedRecipe cocaineRecipe() {
 
@@ -36,8 +36,8 @@ public class DrugRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Meth());
 
         recipe.shape("TTT", "EEE", "TTT");
-        recipe.setIngredient('T', Material.COAL);
-        recipe.setIngredient('E', Material.NETHER_WARTS);
+        recipe.setIngredient('T', Material.BLAZE_POWDER);
+        recipe.setIngredient('E', Material.REDSTONE);
 
         return recipe;
     }
@@ -50,7 +50,7 @@ public class DrugRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Weed());
 
         recipe.shape("TTT", "EEE", "TTT");
-        recipe.setIngredient('T', Material.MILK_BUCKET);
+        recipe.setIngredient('T', Material.BLAZE_POWDER);
         recipe.setIngredient('E', Material.WHEAT);
 
         return recipe;
@@ -91,7 +91,7 @@ public class DrugRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Ecstasy());
 
         recipe.shape("TTT", "EEE", "TTT");
-        recipe.setIngredient('T', Material.GLOWSTONE);
+        recipe.setIngredient('T', Material.GLOWSTONE_DUST);
         recipe.setIngredient('E', Material.RED_MUSHROOM);
 
         return recipe;
@@ -103,8 +103,8 @@ public class DrugRecipes {
 
         ShapedRecipe recipe = new ShapedRecipe(key, drugItems.Flakka());
 
-        recipe.shape("", "", "");
-        recipe.setIngredient('T', Material.GOLD_INGOT);
+        recipe.shape(" T ", "TET", " T ");
+        recipe.setIngredient('T', Material.GOLD_NUGGET);
         recipe.setIngredient('E', Material.PUMPKIN);
 
         return recipe;

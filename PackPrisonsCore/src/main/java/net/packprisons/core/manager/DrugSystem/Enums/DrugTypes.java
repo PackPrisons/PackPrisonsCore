@@ -5,10 +5,10 @@ import org.bukkit.Material;
 public enum DrugTypes {
 
     COCAINE(Material.SUGAR),
-    METH(Material.NETHER_WARTS),
+    METH(Material.COCOA),
     WEED(Material.WHEAT),
     HEROINE(Material.PRISMARINE_CRYSTALS),
-    OPIUM(Material.MELON_SEEDS),
+    OPIUM(Material.GHAST_TEAR),
     ECSTASY(Material.GLOWSTONE_DUST),
     FLAKKA(Material.PUMPKIN_SEEDS);
 

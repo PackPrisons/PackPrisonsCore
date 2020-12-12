@@ -45,8 +45,8 @@ public class DrugEvents implements Listener {
         Player player = event.getPlayer();
         //if break nether_wart on soul sand then drop met
 
-        if(event.getBlock().getType() == Material.NETHER_WARTS) {
-            net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(new ItemStack(event.getBlock().getType()));
+        if(event.getBlock().getType() == Material.WHEAT) { // WEED
+            net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(Drugs.WEED.getItem());
 
             NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
 
@@ -58,7 +58,25 @@ public class DrugEvents implements Listener {
 
                     DrugItems drugItems = new DrugItems();
 
-                    event.getBlock().getDrops().add(new ItemStack(drugItems.Meth()));
+                    event.getBlock().getDrops().add(new ItemStack(drugItems.Weed()));
+                } else {
+                    event.setCancelled(true);
+                }
+            }
+        } else if (event.getBlock().getType() == Material.COCOA) { // OPIUM
+            net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(Drugs.OPIUM.getItem());
+
+            NBTTagCompound compound = (nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound());
+
+            if (compound != null) {
+                if (compound.hasKey("id")) {
+                    double locY = event.getBlock().getY();
+                    Location location = new Location(event.getBlock().getWorld(), event.getBlock().getX(), locY - 1, event.getBlock().getZ());
+                    player.sendColorMessage(location.getBlock().getType().name());
+
+                    DrugItems drugItems = new DrugItems();
+
+                    event.getBlock().getDrops().add(new ItemStack(drugItems.Opium()));
                 } else {
                     event.setCancelled(true);
                 }

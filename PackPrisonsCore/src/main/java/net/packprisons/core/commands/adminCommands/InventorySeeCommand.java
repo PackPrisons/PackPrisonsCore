@@ -12,7 +12,7 @@ public class InventorySeeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equals("invsee")) {
+        if (command.getName().equals("inventorysee")) {
             if (sender instanceof Player) {
 
                 Player player = (Player) sender;
@@ -31,7 +31,7 @@ public class InventorySeeCommand implements CommandExecutor {
                             Bukkit.getScheduler().scheduleSyncDelayedTask(PackPrisonsCore.getInstance(), new Runnable() {
                                 @Override
                                 public void run() {
-                                    player.openInventory(target.getInventory());
+                                    player.getInventory().getHolder().openInventory(target.getInventory());
                                 }
                             }, 20L);
                         }
