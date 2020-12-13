@@ -1,4 +1,4 @@
-package net.packprisons.core.commands.private_message;
+package net.packprisons.core.commands.privateMessage;
 
 import net.packprisons.core.manager.MessageManager;
 import org.bukkit.Bukkit;

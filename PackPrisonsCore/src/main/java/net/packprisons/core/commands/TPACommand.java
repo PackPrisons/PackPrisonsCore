@@ -17,7 +17,7 @@ public class TPACommand implements CommandExecutor {
     private final PlayerMove move = new PlayerMove();
 
     /**
-     * - Bug with accepting the TPA
+     * @TODO: Bug with accepting the TPA; fix the HashMaps/ArrayLists in order to store the player and the "time".
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

@@ -5,8 +5,8 @@ import net.packprisons.core.commands.PingCommand;
 import net.packprisons.core.commands.TPACommand;
 import net.packprisons.core.commands.adminCommands.*;
 import net.packprisons.core.commands.HelpCommand;
-import net.packprisons.core.commands.private_message.MessageCommand;
-import net.packprisons.core.commands.private_message.ReplyCommand;
+import net.packprisons.core.commands.privateMessage.MessageCommand;
+import net.packprisons.core.commands.privateMessage.ReplyCommand;
 import net.packprisons.core.events.PlayerChat;
 import net.packprisons.core.events.PlayerJoin;
 import net.packprisons.core.events.PlayerQuit;
@@ -58,6 +58,8 @@ public final class PackPrisonsCore extends JavaPlugin {
         getCommand("tpall").setExecutor(new TPALLCommand());
         getCommand("invsee").setExecutor(new InventorySeeCommand());
         getCommand("ping").setExecutor(new PingCommand());
+        getCommand("heal").setExecutor(new HealCommand());
+        getCommand("feed").setExecutor(new FeedCommand());
     }
 
     public void registerRecipes() {

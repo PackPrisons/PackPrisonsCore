@@ -19,8 +19,7 @@ import java.util.HashMap;
 
 public class DrugEvents implements Listener {
 
-    //private ArrayList<UUID> cooldown = new ArrayList<>();
-    private HashMap<Player, Long> cooldown = new HashMap<>();
+    private final HashMap<Player, Long> cooldown = new HashMap<>();
 
     @Deprecated
     @EventHandler
@@ -36,6 +35,7 @@ public class DrugEvents implements Listener {
                     cocaine(10, player, compound, event);
                     weed(10, player, compound, event);
                     meth(10, player, compound, event);
+                    opium(10, player, compound, event);
                 }
         }
     }
@@ -86,11 +86,12 @@ public class DrugEvents implements Listener {
 
     }
 
+    // The following methods handle the abilities and cooldowns of all Drugs.
     @Deprecated
     private void cocaine(int time, Player player, NBTTagCompound compound, PlayerInteractEvent event) {
         if (compound.getInt("id") == Drugs.COCAINE.getID()) {
             if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
-                cooldown.put(player, System.currentTimeMillis() + (time * 1000));
+                cooldown.put(player, System.currentTimeMillis() + (time * 1000L));
 
                 player.sendColorMessage("&aLets get high!");
                 player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200, 2), true);
@@ -105,7 +106,7 @@ public class DrugEvents implements Listener {
                     cooldown.remove(player);
                 }
 
-                player.sendColorMessage("&cYou have " + intRemaining + " remaining!");
+                player.sendColorMessage("&cYou have " + intRemaining + " seconds remaining!");
             }
         }
     }
@@ -114,7 +115,7 @@ public class DrugEvents implements Listener {
     private void weed(int time, Player player, NBTTagCompound compound, PlayerInteractEvent event) {
         if (compound.getInt("id") == Drugs.WEED.getID()) {
             if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
-                cooldown.put(player, System.currentTimeMillis() + (time * 1000));
+                cooldown.put(player, System.currentTimeMillis() + (time * 1000L));
 
                 player.sendColorMessage("&aLets get Baked!");
                 player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 200, 2), true);
@@ -129,7 +130,7 @@ public class DrugEvents implements Listener {
                     cooldown.remove(player);
                 }
 
-                player.sendColorMessage("&cYou have " + intRemaining + " remaining!");
+                player.sendColorMessage("&cYou have " + intRemaining + " seconds remaining!");
             }
         }
     }
@@ -138,7 +139,7 @@ public class DrugEvents implements Listener {
     private void meth(int time, Player player, NBTTagCompound compound, PlayerInteractEvent event) {
         if (compound.getInt("id") == Drugs.METH.getID()) {
             if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
-                cooldown.put(player, System.currentTimeMillis() + (time * 1000));
+                cooldown.put(player, System.currentTimeMillis() + (time * 1000L));
 
                 player.sendColorMessage("&aLets go crazy!");
                 player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 200, 2), true);
@@ -153,7 +154,31 @@ public class DrugEvents implements Listener {
                     cooldown.remove(player);
                 }
 
-                player.sendColorMessage("&cYou have " + intRemaining + " remaining!");
+                player.sendColorMessage("&cYou have " + intRemaining + " seconds remaining!");
+            }
+        }
+    }
+
+    @Deprecated
+    private void opium(int time, Player player, NBTTagCompound compound, PlayerInteractEvent event) {
+        if (compound.getInt("id") == Drugs.OPIUM.getID()) {
+            if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
+                cooldown.put(player, System.currentTimeMillis() + (time * 1000L));
+
+                player.sendColorMessage("&aPurest Opium Ever!");
+                player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 200, 2, true));
+                player.playEffect(player.getLocation(), Effect.BLAZE_SHOOT, 1);
+                player.spawnParticle(Particle.CLOUD, player.getLocation(), 10);
+                event.getItem().setAmount(event.getItem().getAmount() - 1);
+            } else {
+                long longRemaining = cooldown.get(player) - System.currentTimeMillis();
+                int intRemaining = (int) longRemaining / 1000;
+
+                if (intRemaining == 0) {
+                    cooldown.remove(player);
+                }
+
+                player.sendColorMessage("&CYou have " + intRemaining + " seconds remaining!");
             }
         }
     }
