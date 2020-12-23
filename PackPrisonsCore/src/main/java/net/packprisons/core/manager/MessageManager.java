@@ -16,7 +16,7 @@ public class MessageManager {
         recentlyMessaged.put(player, target);
     }
 
-    public static void sendMessage(Player sender, Player target, String message) {
+    public static void sendMessage(Player sender, Player target, String message) { //@TODO: Make this configurable
         sender.sendColorMessage("&ato " + target.getName() + " &7" + message);
         target.sendColorMessage( "&afrom " + sender.getName() + " &7" + message);
     }

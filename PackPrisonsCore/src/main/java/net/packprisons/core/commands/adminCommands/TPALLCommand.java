@@ -1,38 +1,38 @@
 package net.packprisons.core.commands.adminCommands;
 
+import net.packprisons.core.utils.ChatUtil;
+import net.packprisons.core.utils.commandUtils.PackCommand;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class TPALLCommand implements CommandExecutor {
+public class TPALLCommand extends PackCommand {
+
+    public TPALLCommand() {
+        super("tpall", 1, 1);
+    }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equals("tpall")) {
-            if (sender instanceof Player) {
+    public void run(CommandSender sender, String[] args) {
+        if (sender instanceof Player) {
 
-                Player player = (Player) sender;
+            Player player = (Player) sender;
 
-               // if (!player.hasPermission("")) {
+            // if (!player.hasPermission("")) {
 
-                //}
+            //}
 
-                if (args.length == 1) {
-                    player.sendColorMessage("&aSuccessfully teleported all online servers to you!");
+            if (args.length == 1) {
+                player.sendColorMessage("&aSuccessfully teleported all online servers to you!");
 
-                    for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
-                        onlinePlayers.teleport(player.getLocation());
-                    }
-                } else {
-                    player.sendColorMessage("&cInvalid Usage! /tpall (player)");
-                    return true;
+                for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
+                    onlinePlayers.teleport(player.getLocation());
                 }
             } else {
-                return true;
+                player.sendColorMessage("&cInvalid Usage! /tpall (player)");
             }
+        } else {
+            sender.sendMessage(ChatUtil.translate("&cOnly a player can use this command!"));
         }
-        return false;
     }
 }

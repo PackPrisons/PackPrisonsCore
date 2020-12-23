@@ -1,31 +1,26 @@
 package net.packprisons.core.commands;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
+import net.packprisons.core.utils.commandUtils.PackCommand;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-public class PingCommand implements CommandExecutor {
+public class PingCommand extends PackCommand {
+
+    public PingCommand() { super("ping", 0, 0); }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equals("ping")) {
-            if (sender instanceof Player) {
+    public void run(CommandSender sender, String[] args) {
+        if (sender instanceof Player) {
 
-                Player player = (Player) sender;
+            Player player = (Player) sender;
 
-                if (args.length == 0) {
-                    int ping = ((CraftPlayer) player).getHandle().ping;
-                    player.sendColorMessage("&aPing: &e" + ping + "ms");
-                } else {
-                    player.sendColorMessage("&cInvalid Usage! /ping");
-                    return true;
-                }
+            if (args.length == 0) {
+                int ping = ((CraftPlayer) player).getHandle().ping;
+                player.sendColorMessage("&cPing: &a" + ping + "ms");
             } else {
-                return true;
+                player.sendColorMessage("&cInvalid Usage! /ping");
             }
         }
-        return false;
     }
 }

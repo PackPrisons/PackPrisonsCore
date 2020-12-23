@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 public abstract class HelpCommandUtil {
 
-   public void buildHelpMessage(Player player,
+   public static void buildHelpMessage(Player player,
                                 String Header,
                                 String firstHelpComponent,
                                 String secondHelpComponent,

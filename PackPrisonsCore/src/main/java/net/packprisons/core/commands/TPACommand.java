@@ -1,96 +1,65 @@
 package net.packprisons.core.commands;
 
-import net.packprisons.core.events.commandEvents.PlayerMove;
+import net.packprisons.core.utils.commandUtils.PackCommand;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 
-public class TPACommand implements CommandExecutor {
+public class TPACommand extends PackCommand {
 
-    public HashMap<Player, Location> tpa = new HashMap<>();
+    /**
+     * 1.) Check for the Targets name
+     * 2.) Have the player get 10 seconds to accept the TPA or else it'll be cancelled
+     */
+
     public HashMap<Player, Long> cooldown = new HashMap<>();
-    private final PlayerMove move = new PlayerMove();
+
+    public TPACommand() {
+        super("tpa", 1, 1);
+    }
 
     /**
      * @TODO: Bug with accepting the TPA; fix the HashMaps/ArrayLists in order to store the player and the "time".
      */
+
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equals("tpa")) {
+    public void run(CommandSender sender, String[] args) {
             if (sender instanceof Player) {
 
                 Player player = (Player) sender;
 
-                if (args.length == 1) {
+                if (args.length == 1) { // tpa (player)
                     Player target = Bukkit.getPlayer(args[0]);
 
                     if (target != null) {
                         if (args[0].equalsIgnoreCase(target.getName())) {
-                            target.sendColorMessage("&a" + player.getName() + " " +
-                                    "&ehas requested to teleport to you! Type" + "&a/tpa confirm" + " &eto accept it.");
+                            if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
 
-                            tpa.put(player, target.getLocation());
-                        } else if (args[0].equalsIgnoreCase("accept")) {
-                            if (tpa.containsKey(player) &&
-                                    tpa.get(player) != null) {
-                                if (!(cooldown.containsKey(player) && cooldown.get(player) > System.currentTimeMillis())) {
-                                        cooldown.put(player, System.currentTimeMillis() + (7 * 1000));
-                                } else {
-                                    if (move.still.contains(player)) {
-                                        long longRemaining = cooldown.get(player) - System.currentTimeMillis();
-                                        int intRemaining = (int) longRemaining / 1000;
+                            } else {
+                                long longRemaining = cooldown.get(player) - System.currentTimeMillis();
+                                int intRemaining = (int) longRemaining / 1000;
 
-                                        if (intRemaining == 0) {
-                                            player.sendColorMessage("&eYou've successfully been teleported to &a" + target.getName());
-
-                                            player.teleport(tpa.get(player));
-                                            cooldown.remove(player);
-                                            tpa.remove(player, target.getLocation());
-                                        }
-
-                                        for (int i = 0; i < intRemaining; i++) {
-                                            player.sendColorMessage("&cYou are going to be Teleported in &e" + i + " seconds");
-                                        }
-                                    } else {
-                                        player.sendColorMessage("&cTPA Has been canceled!");
-                                        cooldown.remove(player);
-                                        tpa.remove(player, target.getLocation());
-                                    }
+                                if (intRemaining == 0) {
+                                    target.sendColorMessage("&c" + player.getName() + " did not accept your TPA request!");
+                                    return;
+                                } else if (intRemaining == 1) {
+                                    player.sendColorMessage("&cYou have " + intRemaining + " second to accept to accept " +
+                                            target.getName() + "'s TPA request!");
                                 }
-                            } else {
-                                player.sendColorMessage("&cYou haven't been sent any TPA Requests!");
-                                return true;
-                            }
-                        } else if (args[0].equalsIgnoreCase("deny")) {
-                            if (tpa.containsKey(player) &&
-                                    tpa.get(player) != null) {
 
-                                player.sendColorMessage("&a" + target.getName() + " &ahas denied your TPA Request!");
-                                tpa.remove(player, target.getLocation());
-                                cooldown.remove(player);
-                            } else {
-                                player.sendColorMessage("&cYou haven't received any TPA Requests!");
-                                return true;
+                                player.sendColorMessage("&cYou have " + intRemaining + " seconds to accept to accept " +
+                                        target.getName() + "'s TPA request!");
                             }
-                        } else {
-                            player.sendColorMessage("&cInvalid Usage! /tpa (player) | /tpa accept | /tpa deny");
-                            return true;
                         }
                     } else {
-                        player.sendColorMessage("&cThis player is not online!");
-                        return true;
+                        player.sendColorMessage("&cPlayer is not online!");
                     }
+                } else {
+                    player.sendColorMessage("&cInvalid Usage! /tpa (player)");
                 }
-
-            } else {
-                return true;
             }
         }
-        return false;
     }
-}
+
